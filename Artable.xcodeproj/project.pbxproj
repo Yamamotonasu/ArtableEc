@@ -17,6 +17,7 @@
 		03FCD4B522C73ADF009776E6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03FCD4B322C73ADF009776E6 /* Main.storyboard */; };
 		03FCD4BA22C73AE1009776E6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03FCD4B822C73AE1009776E6 /* LaunchScreen.storyboard */; };
 		03FCD4C022C73B75009776E6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03FCD49E22C71D1C009776E6 /* Assets.xcassets */; };
+		03FCD4C222C7470A009776E6 /* LoguinStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03FCD4C122C7470A009776E6 /* LoguinStoryboard.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		03FCD4B422C73ADF009776E6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		03FCD4B922C73AE1009776E6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		03FCD4BB22C73AE1009776E6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		03FCD4C122C7470A009776E6 /* LoguinStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoguinStoryboard.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +80,7 @@
 				03FCD49722C71D15009776E6 /* AppDelegate.swift */,
 				03FCD49922C71D15009776E6 /* ViewController.swift */,
 				03FCD49B22C71D15009776E6 /* Main.storyboard */,
+				03FCD4C122C7470A009776E6 /* LoguinStoryboard.storyboard */,
 				03FCD4A022C71D1C009776E6 /* LaunchScreen.storyboard */,
 				03FCD4A322C71D1C009776E6 /* Info.plist */,
 			);
@@ -184,6 +187,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				03FCD4A222C71D1C009776E6 /* LaunchScreen.storyboard in Resources */,
+				03FCD4C222C7470A009776E6 /* LoguinStoryboard.storyboard in Resources */,
 				03FCD49F22C71D1C009776E6 /* Assets.xcassets in Resources */,
 				03FCD49D22C71D15009776E6 /* Main.storyboard in Resources */,
 			);
