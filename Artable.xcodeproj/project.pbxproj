@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0308DA3C22C83FBA002E8723 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0308DA3B22C83FBA002E8723 /* Extensions.swift */; };
 		0308DA3E22C84D0E002E8723 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0308DA3D22C84D0E002E8723 /* Constants.swift */; };
+		0308DA4122C85127002E8723 /* RoundedViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0308DA4022C85127002E8723 /* RoundedViews.swift */; };
 		03FCD49822C71D15009776E6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FCD49722C71D15009776E6 /* AppDelegate.swift */; };
 		03FCD49A22C71D15009776E6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FCD49922C71D15009776E6 /* ViewController.swift */; };
 		03FCD49D22C71D15009776E6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03FCD49B22C71D15009776E6 /* Main.storyboard */; };
@@ -31,6 +32,7 @@
 /* Begin PBXFileReference section */
 		0308DA3B22C83FBA002E8723 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		0308DA3D22C84D0E002E8723 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		0308DA4022C85127002E8723 /* RoundedViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedViews.swift; sourceTree = "<group>"; };
 		03FCD49422C71D15009776E6 /* Artable.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Artable.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03FCD49722C71D15009776E6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		03FCD49922C71D15009776E6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -86,6 +88,14 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
+		0308DA3F22C850F4002E8723 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0308DA4022C85127002E8723 /* RoundedViews.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		03FCD48B22C71D15009776E6 = {
 			isa = PBXGroup;
 			children = (
@@ -136,6 +146,7 @@
 		03FCD4BF22C73B31009776E6 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				0308DA3F22C850F4002E8723 /* View */,
 				0308DA3A22C83F6D002E8723 /* Utils */,
 				03FCD49E22C71D1C009776E6 /* Assets.xcassets */,
 			);
@@ -389,6 +400,7 @@
 			files = (
 				0308DA3C22C83FBA002E8723 /* Extensions.swift in Sources */,
 				03FCD49A22C71D15009776E6 /* ViewController.swift in Sources */,
+				0308DA4122C85127002E8723 /* RoundedViews.swift in Sources */,
 				03FCD4D022C7C093009776E6 /* RegisterVC.swift in Sources */,
 				03FCD49822C71D15009776E6 /* AppDelegate.swift in Sources */,
 				03FCD4CE22C7C06C009776E6 /* LoginVC.swift in Sources */,
