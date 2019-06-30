@@ -78,6 +78,7 @@ class RegisterVC: UIViewController, UITextViewDelegate {
                 debugPrint(error)
                 return
             }
+            
             self.activityIndicator.stopAnimating()
             print("successfully registered new user")
 //            guard let user = authResult?.user else { return }

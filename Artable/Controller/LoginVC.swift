@@ -7,14 +7,48 @@
 //
 
 import UIKit
+import Firebase
 
 class LoginVC: UIViewController {
     
     
-
+    @IBOutlet weak var emailTxt: UITextField!
+    @IBOutlet weak var passTxt: UITextField!
+    
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+    }
+    
+    @IBAction func forgetPassClicked(_ sender: Any) {
+        
+    }
+    
+    @IBAction func loginClicked(_ sender: Any) {
+        
+        guard let email = emailTxt.text else{ return }
+        guard let password = passTxt.text else{ return }
+        
+        activityIndicator.startAnimating()
+        Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
+            
+            if let error = error {
+                debugPrint(error)
+                self.activityIndicator.stopAnimating()
+                return
+            }
+            self.activityIndicator.stopAnimating()
+            print("login was successful!")
+        }
+        
+    }
+    
+    /// create new userは必要ない
+    
+    
+    @IBAction func guestClicked(_ sender: Any) {
+        
     }
 }
