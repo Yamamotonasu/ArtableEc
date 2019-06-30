@@ -55,11 +55,11 @@ class RegisterVC: UIViewController, UITextViewDelegate {
         }
         /// text fieldの値がパスワードに合っていれば、チェックマークを緑にする
         if passwordTxt.text == confirmPassTxt.text {
-            passCheckImg.image = UIImage(named: "green_check")
-            confirmPassCheckImg.image = UIImage(named: "green_check")
+            passCheckImg.image = UIImage(named: AppImages.GreenCheck)
+            confirmPassCheckImg.image = UIImage(named: AppImages.GreenCheck)
         } else {
-            passCheckImg.image = UIImage(named: "red_check")
-            confirmPassCheckImg.image = UIImage(named: "red_check")
+            passCheckImg.image = UIImage(named: AppImages.RedCheck)
+            confirmPassCheckImg.image = UIImage(named: AppImages.RedCheck)
         }
         
     }
