@@ -80,7 +80,7 @@ class RegisterVC: UIViewController, UITextViewDelegate {
             }
             
             self.activityIndicator.stopAnimating()
-            print("successfully registered new user")
+            self.dismiss(animated: true, completion: nil)
 //            guard let user = authResult?.user else { return }
         }
     }
