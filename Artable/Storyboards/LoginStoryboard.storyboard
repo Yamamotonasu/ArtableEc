@@ -10,16 +10,16 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--LoginVC-->
         <scene sceneID="dNA-gr-aYM">
             <objects>
-                <viewController id="BGz-0t-vZV" sceneMemberID="viewController">
+                <viewController id="BGz-0t-vZV" customClass="LoginVC" customModule="Artable" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pHs-Jr-yrV">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_left1" translatesAutoresizingMaskIntoConstraints="NO" id="0CE-Wd-04b">
-                                <rect key="frame" x="0.0" y="88" width="375.00000000000045" height="724"/>
+                                <rect key="frame" x="0.0" y="88" width="375" height="724"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="Mth-1N-Hxp">
                                 <rect key="frame" x="20" y="107.99999999999997" width="335" height="323.33333333333326"/>
@@ -118,10 +118,10 @@
             </objects>
             <point key="canvasLocation" x="1042.0289855072465" y="150"/>
         </scene>
-        <!--View Controller-->
+        <!--RegisterVC-->
         <scene sceneID="r9e-kn-12I">
             <objects>
-                <viewController id="vAn-Q9-jje" sceneMemberID="viewController">
+                <viewController id="vAn-Q9-jje" customClass="RegisterVC" customModule="Artable" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bL9-lh-Z8o">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -184,6 +184,9 @@
                                         <state key="normal" title="Button">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="registerClicked:" destination="vAn-Q9-jje" eventType="touchUpInside" id="MY9-2M-bbC"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -191,40 +194,46 @@
                                 <rect key="frame" x="169" y="452.66666666666669" width="37" height="37"/>
                                 <color key="color" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </activityIndicatorView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="red_check" translatesAutoresizingMaskIntoConstraints="NO" id="sLd-eo-snG">
-                                <rect key="frame" x="308" y="280" width="40" height="40"/>
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="red_check" translatesAutoresizingMaskIntoConstraints="NO" id="0L4-cB-rXL">
+                                <rect key="frame" x="312" y="283.33333333333331" width="35" height="35"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="40" id="7R8-mb-Pi6"/>
-                                    <constraint firstAttribute="height" constant="40" id="Gmm-Rj-jzF"/>
+                                    <constraint firstAttribute="height" constant="35" id="BV3-AA-wYg"/>
+                                    <constraint firstAttribute="width" constant="35" id="kHN-jQ-Xre"/>
                                 </constraints>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="red_check" translatesAutoresizingMaskIntoConstraints="NO" id="0L4-cB-rXL">
-                                <rect key="frame" x="307" y="340.66666666666669" width="40" height="40"/>
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="red_check" translatesAutoresizingMaskIntoConstraints="NO" id="sLd-eo-snG">
+                                <rect key="frame" x="312" y="343.33333333333331" width="35" height="35"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="40" id="8AW-dq-8lh"/>
-                                    <constraint firstAttribute="height" constant="40" id="EAH-3F-RhM"/>
+                                    <constraint firstAttribute="width" constant="35" id="5lv-tU-TdN"/>
+                                    <constraint firstAttribute="height" constant="35" id="GFP-eM-yla"/>
                                 </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="VNU-xA-1ps" firstAttribute="top" secondItem="sz4-vc-Z9T" secondAttribute="top" id="3IW-87-ksf"/>
+                            <constraint firstItem="sLd-eo-snG" firstAttribute="centerY" secondItem="INh-TL-sSZ" secondAttribute="centerY" id="4Zr-CV-1J3"/>
                             <constraint firstItem="VNU-xA-1ps" firstAttribute="leading" secondItem="sz4-vc-Z9T" secondAttribute="leading" id="6Gq-vh-bDf"/>
-                            <constraint firstItem="sLd-eo-snG" firstAttribute="centerX" secondItem="fd4-cG-EIb" secondAttribute="centerX" id="GTY-PJ-Nrd"/>
-                            <constraint firstItem="sLd-eo-snG" firstAttribute="centerY" secondItem="NA0-UJ-DGz" secondAttribute="centerY" constant="-8" id="LUX-Gr-nGg"/>
+                            <constraint firstItem="0L4-cB-rXL" firstAttribute="centerY" secondItem="NA0-UJ-DGz" secondAttribute="centerY" id="F1T-ya-xbg"/>
                             <constraint firstItem="VNU-xA-1ps" firstAttribute="trailing" secondItem="sz4-vc-Z9T" secondAttribute="trailing" id="M2C-0d-4sk"/>
                             <constraint firstAttribute="bottom" secondItem="VNU-xA-1ps" secondAttribute="bottom" id="PFF-FF-674"/>
+                            <constraint firstItem="0L4-cB-rXL" firstAttribute="trailing" secondItem="NA0-UJ-DGz" secondAttribute="trailing" constant="-8" id="RKy-ZY-zP2"/>
                             <constraint firstItem="kAx-5J-KFY" firstAttribute="top" secondItem="sz4-vc-Z9T" secondAttribute="top" constant="20" id="dee-Zn-ahN"/>
                             <constraint firstItem="fd4-cG-EIb" firstAttribute="top" secondItem="kAx-5J-KFY" secondAttribute="bottom" constant="12" id="ezj-a8-zjl"/>
+                            <constraint firstItem="sLd-eo-snG" firstAttribute="trailing" secondItem="INh-TL-sSZ" secondAttribute="trailing" constant="-8" id="f6R-xg-ceQ"/>
                             <constraint firstItem="fd4-cG-EIb" firstAttribute="centerX" secondItem="bL9-lh-Z8o" secondAttribute="centerX" id="fhd-kc-yze"/>
-                            <constraint firstItem="0L4-cB-rXL" firstAttribute="trailing" secondItem="INh-TL-sSZ" secondAttribute="trailing" constant="-8" id="njU-XA-jMr"/>
                             <constraint firstItem="kAx-5J-KFY" firstAttribute="leading" secondItem="sz4-vc-Z9T" secondAttribute="leading" constant="20" id="oHA-CJ-lgt"/>
-                            <constraint firstItem="0L4-cB-rXL" firstAttribute="centerY" secondItem="INh-TL-sSZ" secondAttribute="centerY" id="raJ-de-goJ"/>
                             <constraint firstItem="sz4-vc-Z9T" firstAttribute="trailing" secondItem="kAx-5J-KFY" secondAttribute="trailing" constant="20" id="vac-Ey-ItC"/>
-                            <constraint firstItem="sLd-eo-snG" firstAttribute="top" secondItem="fd4-cG-EIb" secondAttribute="bottom" constant="49" id="z1X-bE-kmd"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="sz4-vc-Z9T"/>
                     </view>
+                    <connections>
+                        <outlet property="activityIndicator" destination="fd4-cG-EIb" id="PIb-oH-mgq"/>
+                        <outlet property="confirmPassTxt" destination="INh-TL-sSZ" id="6h1-ly-zzf"/>
+                        <outlet property="emailTxt" destination="gXM-vJ-Rfu" id="qDk-az-vQ7"/>
+                        <outlet property="passwordTxt" destination="NA0-UJ-DGz" id="pda-Fy-pxQ"/>
+                        <outlet property="usernameTxt" destination="iOg-YP-zSu" id="hJo-Ig-MGT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MPy-RY-ruQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -233,7 +242,7 @@
         <!--Navigation Controller-->
         <scene sceneID="HWT-gV-o9G">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="X6K-yY-gtG" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="loginVC" automaticallyAdjustsScrollViewInsets="NO" id="X6K-yY-gtG" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="KA7-Xw-Mfk">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
