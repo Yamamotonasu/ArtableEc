@@ -70,14 +70,37 @@ class RegisterVC: UIViewController, UITextViewDelegate {
         guard let username = usernameTxt.text, !username.isEmpty else { return }
         guard let password = passwordTxt.text, !password.isEmpty else { return }
         
-        activityIndicator.startAnimating()
-        /// クリックするとユーザーが作成される。
-        Auth.auth().createUser(withEmail: email, password: password) { (authResult, error) in
-            /// errroが起きるとここで処理が終了する
+        /// 現在のユーザーが居なければreturnで返す
+        guard let authUser = Auth.auth().currentUser else {
+            return
+        }
+        
+        /// emailとpasswordのみでも承認する
+        let credential = EmailAuthProvider.credential(withEmail: email, password: password)
+        
+        /// facebookでのログインを許可する
+//        let facebookCredential = FacebookAuthProvider.credential(withAccessToken: <#T##String#>)
+//
+//        /// twitterでのログインを許可する
+//        let twitterCredet
+        
+        authUser.linkAndRetrieveData(with: credential) { (result, error) in
             if let error = error {
                 debugPrint(error)
                 return
             }
+        }
+        
+        activityIndicator.startAnimating()
+        
+        
+        /// クリックするとユーザーが作成される。
+        Auth.auth().createUser(withEmail: email, password: password) { (authResult, error) in
+            /// errroが起きるとここで処理が終了する
+//            if let error = error {
+//                debugPrint(error)
+//                return
+//            }
             
             self.activityIndicator.stopAnimating()
             self.dismiss(animated: true, completion: nil)

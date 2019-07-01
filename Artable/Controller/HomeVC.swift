@@ -18,17 +18,21 @@ class HomeVC: UIViewController {
     /// インスタンス化した時一度だけよばれる
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-//        let storyboard = UIStoryboard(name: "LoginStoryboard", bundle: nil)
-//        let controller = storyboard.instantiateViewController(withIdentifier: "loginVC")
-//        present(controller, animated: true, completion: nil)
+        if Auth.auth().currentUser == nil {
+            Auth.auth().signInAnonymously{ (result, error) in
+                if let error = error {
+                    debugPrint(error)
+                }
+            }
+        }
     }
     
 
     
     /// ページをロードする度に呼ばれる
     override func viewDidAppear(_ animated: Bool) {
-        if let _ = Auth.auth().currentUser {
+        /// 認証状態のユーザーが存在するかつuserが匿名ではない
+        if let user = Auth.auth().currentUser, !user.isAnonymous {
             loginOutBtn.title = "Logout"
         } else {
             loginOutBtn.title = "Login"
@@ -39,20 +43,38 @@ class HomeVC: UIViewController {
     fileprivate func presentLoginController() {
         let storyboard = UIStoryboard(name: Storyboard.LoginStoryboard, bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: StoryboardId.LoginVC)
+        /// 第一引数に遷移させたいコントローラ名、completionはcallback
         present(controller, animated: true, completion: nil)
     }
     
     @IBAction func loginOutClicked(_ sender: Any) {
-        if let _ = Auth.auth().currentUser {
+        
+        guard let user = Auth.auth().currentUser else { return }
+        if user.isAnonymous {
+            presentLoginController()
+        } else {
             do {
                 try Auth.auth().signOut()
-                presentLoginController()
+                Auth.auth().signInAnonymously { (result, error) in
+                    if let error = error {
+                        debugPrint(error)
+                    }
+                    self.presentLoginController()
+                }
             } catch {
-                debugPrint(error.localizedDescription)
+                debugPrint(error)
             }
-        } else {
-            presentLoginController()
         }
+//        if let _ = Auth.auth().currentUser {
+//            do {
+////                try Auth.auth().signOut()
+//                presentLoginController()
+//            } catch {
+//                debugPrint(error.localizedDescription)
+//            }
+//        } else {
+//            presentLoginController()
+//        }
         
     }
     
