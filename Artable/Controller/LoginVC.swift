@@ -35,7 +35,7 @@ class LoginVC: UIViewController {
         Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
             
             if let error = error {
-                debugPrint(error.localizedDescription)
+                debugPrint(error)
                 self.handleFireAuthError(error: error)
                 self.activityIndicator.stopAnimating()
                 return

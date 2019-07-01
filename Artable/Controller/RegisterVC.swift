@@ -87,6 +87,7 @@ class RegisterVC: UIViewController, UITextViewDelegate {
         authUser.linkAndRetrieveData(with: credential) { (result, error) in
             if let error = error {
                 debugPrint(error)
+                self.handleFireAuthError(error: error)
                 return
             }
         }
