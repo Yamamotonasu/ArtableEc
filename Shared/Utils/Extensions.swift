@@ -21,16 +21,20 @@ extension UIViewController {
     func handleFireAuthError(error: Error) {
         /// firebaseのエラーコードのenumから抽出
         if let errorCode = AuthErrorCode(rawValue: error._code) {
-            let alert = UIAlertController(title: "Error", message: errorCode.errorMessage, preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
+            let alert = UIAlertController(title: "何かが間違っているよ！", message: errorCode.errorMessage, preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "分かったよ。", style: .default, handler: nil)
             alert.addAction(okAction)
             present(alert, animated: true, completion: nil)
         }
-        
+    }
 //        let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
 //        let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
 //        alert.addAction(okAction)
 //        present(alert, animated: true, completion: nil)
+    func simpleAlert(title: String, msg: String) {
+        let alert = UIAlertController(title: title, message: msg, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "分かったよ。", style: .default, handler: nil))
+        present(alert, animated: true, completion: nil)
     }
 }
 

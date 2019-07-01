@@ -28,8 +28,14 @@ class LoginVC: UIViewController {
     
     @IBAction func loginClicked(_ sender: Any) {
         
-        guard let email = emailTxt.text else{ return }
-        guard let password = passTxt.text else{ return }
+        guard let email = emailTxt.text else {
+            simpleAlert(title: "エラー", msg: "メールアドレスを入力してください。")
+            return
+        }
+        guard let password = passTxt.text else {
+            simpleAlert(title: "エラー", msg: "パスワードを入力してください。")
+            return
+        }
         
         activityIndicator.startAnimating()
         Auth.auth().signIn(withEmail: email, password: password) { (user, error) in

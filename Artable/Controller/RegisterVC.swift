@@ -6,6 +6,7 @@
 //  Copyright © 2019 山本裕太. All rights reserved.
 //
 
+import Foundation
 import UIKit
 import Firebase
 
@@ -33,7 +34,6 @@ class RegisterVC: UIViewController, UITextViewDelegate {
         passwordTxt.addTarget(self, action: #selector(textFieldDidChange(_:)), for: UIControl.Event.editingChanged)
         
         confirmPassTxt.addTarget(self, action: #selector(textFieldDidChange(_:)), for: UIControl.Event.editingChanged)
-        
     }
     
     /// addTargetでTextFieldに入力される度に実行される関数に指定
@@ -66,9 +66,23 @@ class RegisterVC: UIViewController, UITextViewDelegate {
     
     @IBAction func registerClicked(_ sender: Any) {
         /// emailと名前とパスワードが設定されていなければクリックしてもreturnを返す
-        guard let email = emailTxt.text else { return }
-        guard let username = usernameTxt.text, !username.isEmpty else { return }
-        guard let password = passwordTxt.text, !password.isEmpty else { return }
+        guard let email = emailTxt.text, !email.isEmpty else {
+            simpleAlert(title: "エラー", msg: "メールアドレスを入力してください。")
+            return
+        }
+        guard let username = usernameTxt.text, !username.isEmpty else {
+            simpleAlert(title: "エラー", msg: "ユーザーネームを入力してください。")
+            return
+        }
+        guard let password = passwordTxt.text, !password.isEmpty else {
+            simpleAlert(title: "エラー", msg: "パスワードを入力してください。")
+            return
+        }
+        
+        guard let confirmPass = confirmPassTxt.text, confirmPass == password else {
+            simpleAlert(title: "エラー", msg: "パスワードが合いません")
+            return
+        }
         
         /// 現在のユーザーが居なければreturnで返す
         guard let authUser = Auth.auth().currentUser else {
