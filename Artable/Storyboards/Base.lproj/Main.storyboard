@@ -21,13 +21,34 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.20000000000000001" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_cat3" translatesAutoresizingMaskIntoConstraints="NO" id="ZSn-yw-k74">
                                 <rect key="frame" x="0.0" y="88" width="414" height="808"/>
                             </imageView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="dmE-7l-A1e">
+                                <rect key="frame" x="20" y="88" width="374" height="808"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="eS7-eP-bW5">
+                                    <size key="itemSize" width="182" height="292"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="CdS-ZQ-vPa">
+                                <rect key="frame" x="188.5" y="429.5" width="37" height="37"/>
+                                <color key="color" red="1" green="0.39153648009999997" blue="0.5656263305" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="CdS-ZQ-vPa" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="0Wa-eR-qrS"/>
+                            <constraint firstAttribute="bottom" secondItem="dmE-7l-A1e" secondAttribute="bottom" id="5d2-Wv-cDb"/>
                             <constraint firstItem="ZSn-yw-k74" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="8CW-Mg-0IQ"/>
+                            <constraint firstItem="dmE-7l-A1e" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="GPA-pa-3I1"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ZSn-yw-k74" secondAttribute="trailing" id="RZj-CN-VSn"/>
+                            <constraint firstItem="dmE-7l-A1e" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="SZF-EU-QbO"/>
                             <constraint firstAttribute="bottom" secondItem="ZSn-yw-k74" secondAttribute="bottom" id="Yho-GX-2v2"/>
                             <constraint firstItem="ZSn-yw-k74" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="dh5-vd-2BT"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="dmE-7l-A1e" secondAttribute="trailing" constant="20" id="joJ-NT-WFj"/>
+                            <constraint firstItem="CdS-ZQ-vPa" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="rVQ-B5-Znw"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -39,6 +60,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="activityIndicator" destination="CdS-ZQ-vPa" id="71r-d0-KIG"/>
+                        <outlet property="collectionView" destination="dmE-7l-A1e" id="SBs-E7-Sxq"/>
                         <outlet property="loginOutBtn" destination="zCX-Wa-QlR" id="2sW-mg-1kf"/>
                     </connections>
                 </viewController>

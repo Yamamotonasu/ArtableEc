@@ -14,6 +14,8 @@
 		0308DA4822CE3534002E8723 /* ForgotPasswordVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0308DA4622CE3534002E8723 /* ForgotPasswordVC.xib */; };
 		0308DA4A22CE4851002E8723 /* firebase+utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0308DA4922CE4851002E8723 /* firebase+utils.swift */; };
 		0308DA4B22CE49CC002E8723 /* firebase+utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0308DA4922CE4851002E8723 /* firebase+utils.swift */; };
+		0308DA4D22CE53D6002E8723 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0308DA4C22CE53D6002E8723 /* Category.swift */; };
+		0308DA4E22CE53D6002E8723 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0308DA4C22CE53D6002E8723 /* Category.swift */; };
 		03FCD49822C71D15009776E6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FCD49722C71D15009776E6 /* AppDelegate.swift */; };
 		03FCD49A22C71D15009776E6 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FCD49922C71D15009776E6 /* HomeVC.swift */; };
 		03FCD49D22C71D15009776E6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03FCD49B22C71D15009776E6 /* Main.storyboard */; };
@@ -40,6 +42,7 @@
 		0308DA4522CE3534002E8723 /* ForgotPasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordVC.swift; sourceTree = "<group>"; };
 		0308DA4622CE3534002E8723 /* ForgotPasswordVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ForgotPasswordVC.xib; sourceTree = "<group>"; };
 		0308DA4922CE4851002E8723 /* firebase+utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "firebase+utils.swift"; sourceTree = "<group>"; };
+		0308DA4C22CE53D6002E8723 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		03FCD49422C71D15009776E6 /* Artable.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Artable.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03FCD49722C71D15009776E6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		03FCD49922C71D15009776E6 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
@@ -139,7 +142,6 @@
 			children = (
 				0308DA4222CE34C1002E8723 /* XIBs */,
 				03FCD4CC22C7BFF0009776E6 /* Storyboards */,
-				03FCD4CB22C7BFDD009776E6 /* Model */,
 				03FCD4CA22C7BFCE009776E6 /* View */,
 				03FCD4C922C7BFBA009776E6 /* Controller */,
 				03FCD4C522C7A374009776E6 /* GoogleService-Info.plist */,
@@ -164,6 +166,7 @@
 		03FCD4BF22C73B31009776E6 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				03FCD4CB22C7BFDD009776E6 /* Model */,
 				0308DA3F22C850F4002E8723 /* View */,
 				0308DA3A22C83F6D002E8723 /* Utils */,
 				03FCD49E22C71D1C009776E6 /* Assets.xcassets */,
@@ -192,6 +195,7 @@
 		03FCD4CB22C7BFDD009776E6 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				0308DA4C22CE53D6002E8723 /* Category.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -418,6 +422,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0308DA3C22C83FBA002E8723 /* Extensions.swift in Sources */,
+				0308DA4D22CE53D6002E8723 /* Category.swift in Sources */,
 				0308DA4A22CE4851002E8723 /* firebase+utils.swift in Sources */,
 				03FCD49A22C71D15009776E6 /* HomeVC.swift in Sources */,
 				0308DA4122C85127002E8723 /* RoundedViews.swift in Sources */,
@@ -436,6 +441,7 @@
 				03FCD4B222C73ADF009776E6 /* ViewController.swift in Sources */,
 				0308DA4B22CE49CC002E8723 /* firebase+utils.swift in Sources */,
 				03FCD4B022C73ADF009776E6 /* AppDelegate.swift in Sources */,
+				0308DA4E22CE53D6002E8723 /* Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
