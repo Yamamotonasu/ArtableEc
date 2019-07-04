@@ -10,6 +10,8 @@
 		0308DA3C22C83FBA002E8723 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0308DA3B22C83FBA002E8723 /* Extensions.swift */; };
 		0308DA3E22C84D0E002E8723 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0308DA3D22C84D0E002E8723 /* Constants.swift */; };
 		0308DA4122C85127002E8723 /* RoundedViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0308DA4022C85127002E8723 /* RoundedViews.swift */; };
+		0308DA4722CE3534002E8723 /* ForgotPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0308DA4522CE3534002E8723 /* ForgotPasswordVC.swift */; };
+		0308DA4822CE3534002E8723 /* ForgotPasswordVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0308DA4622CE3534002E8723 /* ForgotPasswordVC.xib */; };
 		03FCD49822C71D15009776E6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FCD49722C71D15009776E6 /* AppDelegate.swift */; };
 		03FCD49A22C71D15009776E6 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FCD49922C71D15009776E6 /* HomeVC.swift */; };
 		03FCD49D22C71D15009776E6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03FCD49B22C71D15009776E6 /* Main.storyboard */; };
@@ -33,6 +35,8 @@
 		0308DA3B22C83FBA002E8723 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		0308DA3D22C84D0E002E8723 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		0308DA4022C85127002E8723 /* RoundedViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedViews.swift; sourceTree = "<group>"; };
+		0308DA4522CE3534002E8723 /* ForgotPasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordVC.swift; sourceTree = "<group>"; };
+		0308DA4622CE3534002E8723 /* ForgotPasswordVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ForgotPasswordVC.xib; sourceTree = "<group>"; };
 		03FCD49422C71D15009776E6 /* Artable.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Artable.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03FCD49722C71D15009776E6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		03FCD49922C71D15009776E6 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
@@ -96,6 +100,15 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		0308DA4222CE34C1002E8723 /* XIBs */ = {
+			isa = PBXGroup;
+			children = (
+				0308DA4522CE3534002E8723 /* ForgotPasswordVC.swift */,
+				0308DA4622CE3534002E8723 /* ForgotPasswordVC.xib */,
+			);
+			path = XIBs;
+			sourceTree = "<group>";
+		};
 		03FCD48B22C71D15009776E6 = {
 			isa = PBXGroup;
 			children = (
@@ -120,6 +133,7 @@
 		03FCD49622C71D15009776E6 /* Artable */ = {
 			isa = PBXGroup;
 			children = (
+				0308DA4222CE34C1002E8723 /* XIBs */,
 				03FCD4CC22C7BFF0009776E6 /* Storyboards */,
 				03FCD4CB22C7BFDD009776E6 /* Model */,
 				03FCD4CA22C7BFCE009776E6 /* View */,
@@ -295,6 +309,7 @@
 				03FCD4C222C7470A009776E6 /* LoginStoryboard.storyboard in Resources */,
 				03FCD4C622C7A374009776E6 /* GoogleService-Info.plist in Resources */,
 				03FCD49F22C71D1C009776E6 /* Assets.xcassets in Resources */,
+				0308DA4822CE3534002E8723 /* ForgotPasswordVC.xib in Resources */,
 				03FCD49D22C71D15009776E6 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -404,6 +419,7 @@
 				03FCD4D022C7C093009776E6 /* RegisterVC.swift in Sources */,
 				03FCD49822C71D15009776E6 /* AppDelegate.swift in Sources */,
 				03FCD4CE22C7C06C009776E6 /* LoginVC.swift in Sources */,
+				0308DA4722CE3534002E8723 /* ForgotPasswordVC.swift in Sources */,
 				0308DA3E22C84D0E002E8723 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
