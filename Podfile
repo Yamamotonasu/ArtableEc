@@ -1,5 +1,7 @@
 project 'Artable.xcodeproj'
 
+platform :ios, '10.0'
+
 def shared_pods
 pod 'Firebase/Core'
 pod 'Firebase/Auth'
@@ -27,7 +29,5 @@ use_frameworks!
  
 # Pods for ArtableAdmin
 shared_pods
-pod 'CropViewController'
-
 end
 

@@ -12,6 +12,8 @@
 		0308DA4122C85127002E8723 /* RoundedViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0308DA4022C85127002E8723 /* RoundedViews.swift */; };
 		0308DA4722CE3534002E8723 /* ForgotPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0308DA4522CE3534002E8723 /* ForgotPasswordVC.swift */; };
 		0308DA4822CE3534002E8723 /* ForgotPasswordVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0308DA4622CE3534002E8723 /* ForgotPasswordVC.xib */; };
+		0308DA4A22CE4851002E8723 /* firebase+utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0308DA4922CE4851002E8723 /* firebase+utils.swift */; };
+		0308DA4B22CE49CC002E8723 /* firebase+utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0308DA4922CE4851002E8723 /* firebase+utils.swift */; };
 		03FCD49822C71D15009776E6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FCD49722C71D15009776E6 /* AppDelegate.swift */; };
 		03FCD49A22C71D15009776E6 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FCD49922C71D15009776E6 /* HomeVC.swift */; };
 		03FCD49D22C71D15009776E6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03FCD49B22C71D15009776E6 /* Main.storyboard */; };
@@ -37,6 +39,7 @@
 		0308DA4022C85127002E8723 /* RoundedViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedViews.swift; sourceTree = "<group>"; };
 		0308DA4522CE3534002E8723 /* ForgotPasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordVC.swift; sourceTree = "<group>"; };
 		0308DA4622CE3534002E8723 /* ForgotPasswordVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ForgotPasswordVC.xib; sourceTree = "<group>"; };
+		0308DA4922CE4851002E8723 /* firebase+utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "firebase+utils.swift"; sourceTree = "<group>"; };
 		03FCD49422C71D15009776E6 /* Artable.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Artable.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03FCD49722C71D15009776E6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		03FCD49922C71D15009776E6 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
@@ -88,6 +91,7 @@
 			children = (
 				0308DA3B22C83FBA002E8723 /* Extensions.swift */,
 				0308DA3D22C84D0E002E8723 /* Constants.swift */,
+				0308DA4922CE4851002E8723 /* firebase+utils.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -414,6 +418,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0308DA3C22C83FBA002E8723 /* Extensions.swift in Sources */,
+				0308DA4A22CE4851002E8723 /* firebase+utils.swift in Sources */,
 				03FCD49A22C71D15009776E6 /* HomeVC.swift in Sources */,
 				0308DA4122C85127002E8723 /* RoundedViews.swift in Sources */,
 				03FCD4D022C7C093009776E6 /* RegisterVC.swift in Sources */,
@@ -429,6 +434,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				03FCD4B222C73ADF009776E6 /* ViewController.swift in Sources */,
+				0308DA4B22CE49CC002E8723 /* firebase+utils.swift in Sources */,
 				03FCD4B022C73ADF009776E6 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -594,6 +600,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = Artable/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -612,6 +619,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = Artable/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -630,6 +638,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = ArdableAdmin/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -648,6 +657,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = ArdableAdmin/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
