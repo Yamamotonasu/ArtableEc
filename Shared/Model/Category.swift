@@ -12,7 +12,7 @@ import FirebaseFirestore
 struct Category {
     var name: String
     var id: String
-    var imageUrl: String
+    var imgUrl: String
     var isActive: Bool = true
     var timeStamp: Timestamp
 }
