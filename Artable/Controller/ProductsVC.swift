@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseFirestore
+import Alamofire
 
 class ProductsVC: UIViewController {
     
@@ -17,6 +18,7 @@ class ProductsVC: UIViewController {
     
     // variable
     var products = [Product]()
+    var category: Category!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +28,7 @@ class ProductsVC: UIViewController {
         products.append(product)
         
         tableView.delegate = self
-        tableView.delegate = self
+        tableView.dataSource = self
         tableView.register(UINib(nibName: Identifiers.ProductCell, bundle: nil), forCellReuseIdentifier: Identifiers.ProductCell)
     }
 }
@@ -49,6 +51,4 @@ extension ProductsVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 200
     }
-    
-    
 }

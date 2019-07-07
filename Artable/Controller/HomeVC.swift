@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import Alamofire
 
 class HomeVC: UIViewController {
     
@@ -19,7 +20,7 @@ class HomeVC: UIViewController {
     
     //variable
     var categories = [Category]()
-    
+    var selectedCategory: Category!
     /// インスタンス化した時一度だけよばれる
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -122,5 +123,21 @@ extension HomeVC : UICollectionViewDelegate, UICollectionViewDataSource, UIColle
         let cellHeight = cellWidth * 1.5
         
         return CGSize(width: cellWidth, height: cellHeight)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        selectedCategory = categories[indexPath.item]
+        /// tapされたcellに飛ぶ
+        performSegue(withIdentifier: Segues.ToProducts, sender: self)
+        
+    }
+    
+    /// segueのために準備
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == Segues.ToProducts {
+            if let destination = segue.destination as? ProductsVC {
+                destination.category = selectedCategory
+            }
+        }
     }
 }
