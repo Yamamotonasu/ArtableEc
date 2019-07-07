@@ -25,7 +25,7 @@ class HomeVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let category = Category.init(name: "Nature", id: "abcdefg", imgUrl: "https://images.unsplash.com/photo-1540206395-68808572332f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60", isActive: true, timeStamp: Timestamp())
+        let category = Category.init(name: "Nature", id: "abcdefg", imgUrl: "https://images.unsplash.com/photo-1484406566174-9da000fda645?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=635&q=80", isActive: true, timeStamp: Timestamp())
         
         categories.append(category)
         
