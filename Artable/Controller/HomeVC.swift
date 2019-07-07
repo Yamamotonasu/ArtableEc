@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import Alamofire
+import FirebaseFirestore
 
 class HomeVC: UIViewController {
     
@@ -21,9 +22,12 @@ class HomeVC: UIViewController {
     //variable
     var categories = [Category]()
     var selectedCategory: Category!
+    var db : Firestore!
     /// インスタンス化した時一度だけよばれる
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        db = Firestore.firestore()
         
         let category = Category.init(name: "Nature", id: "abcdefg", imgUrl: "https://images.unsplash.com/photo-1484406566174-9da000fda645?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=635&q=80", isActive: true, timeStamp: Timestamp())
         
@@ -43,6 +47,7 @@ class HomeVC: UIViewController {
                 }
             }
         }
+        fetchDocument()
     }
     
 
@@ -54,6 +59,25 @@ class HomeVC: UIViewController {
             loginOutBtn.title = "Logout"
         } else {
             loginOutBtn.title = "Login"
+        }
+    }
+    
+    func fetchDocument() {
+        let docRef = db.collection("categories").document("PO4UCGdyyFwgSydq98XE")
+        docRef.getDocument { (snap, error) in
+            /// DBからデータを取り出す
+            guard let data = snap?.data() else { return }
+            let name = data["name"] as? String ?? ""
+            let id = data["id"] as? String ?? ""
+            let imgUrl = data["imgUrl"] as? String ?? ""
+            let isActive = data["isActive"] as? Bool ?? true
+            let timeStamp = data["timeStamp"] as? Timestamp ?? Timestamp()
+            
+            let newCategory = Category.init(name: name, id: id, imgUrl: imgUrl, isActive: isActive, timeStamp: timeStamp)
+            
+            self.categories.append(newCategory)
+            self.collectionView.reloadData()
+            
         }
     }
 
