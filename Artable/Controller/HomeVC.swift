@@ -61,6 +61,8 @@ class HomeVC: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         /// リアルタイム監視を停止する
         listener.remove()
+        categories.removeAll()
+        collectionView.reloadData()
     }
 
     /// dbに変更があったらリアルタイムで変更を加える
