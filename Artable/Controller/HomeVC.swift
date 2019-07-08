@@ -25,7 +25,7 @@ class HomeVC: UIViewController {
     var db : Firestore!
     /// インスタンス化した時一度だけよばれる
     override func viewDidLoad() {
-        super.viewDidLoad()        
+        super.viewDidLoad()
         db = Firestore.firestore()
         
         collectionView.delegate =  self
@@ -42,7 +42,8 @@ class HomeVC: UIViewController {
                 }
             }
         }
-        fetchDocument()
+//        fetchDocument()
+        fetchCollection()
     }
     
 
@@ -67,6 +68,21 @@ class HomeVC: UIViewController {
             self.categories.append(newCategory)
             self.collectionView.reloadData()
             
+        }
+    }
+    
+    func fetchCollection() {
+        /// dbのcollectionを指定する
+        let collectionReference = db.collection("categories")
+        collectionReference.getDocuments { (snap, error) in
+            guard let documents = snap?.documents else { return }
+            for document in documents {
+                /// dataを取得する
+                let data = document.data()
+                let newCategory = Category.init(data: data)
+                self.categories.append(newCategory)
+            }
+            self.collectionView.reloadData()
         }
     }
 
