@@ -43,15 +43,13 @@ class HomeVC: UIViewController {
                 }
             }
         }
-//        fetchDocument()
-        fetchCollection()
     }
     
 
     
     /// ページをロードする度に呼ばれる
     override func viewDidAppear(_ animated: Bool) {
-        fetchCollection()
+        setCategoriesListener()
         /// 認証状態のユーザーが存在するかつuserが匿名ではない
         if let user = Auth.auth().currentUser, !user.isAnonymous {
             loginOutBtn.title = "Logout"
@@ -64,54 +62,45 @@ class HomeVC: UIViewController {
         /// リアルタイム監視を停止する
         listener.remove()
     }
-    
-    func fetchDocument() {
-        /// firestoreのデータの場所を指定する。このIDのデータが更新された時リアルタイムでアップデートされる。
-        let docRef = db.collection("categories").document("PO4UCGdyyFwgSydq98XE")
-        /// リアルタイム通信の処理
-        docRef.addSnapshotListener { (snap, error) in
-            self.categories.removeAll()
-            guard let data = snap?.data() else { return }
-            let newCategory = Category.init(data: data)
-            self.categories.append(newCategory)
-            self.collectionView.reloadData()
-        }
-//        docRef.getDocument { (snap, error) in
-//            /// DBからデータを取り出す
-//            guard let data = snap?.data() else { return }
-//            let newCategory = Category.init(data: data)
-//            self.categories.append(newCategory)
-//            self.collectionView.reloadData()
-//
-//        }
-    }
-    
-    func fetchCollection() {
-        /// dbのcollectionを指定する
-        let collectionReference = db.collection("categories")
-        ///
-        listener = collectionReference.addSnapshotListener { (snap, error) in
-            guard let documents = snap?.documents else { return }
-            self.categories.removeAll()
-            for document in documents {
-                /// dataを取得する
-                let data = document.data()
-                let newCategory = Category.init(data: data)
-                self.categories.append(newCategory)
+
+    /// dbに変更があったらリアルタイムで変更を加える
+    func setCategoriesListener() {
+        listener = db.collection("categories").addSnapshotListener({ (snap, error) in
+            if let error = error {
+                debugPrint(error.localizedDescription)
+                return
             }
-            self.collectionView.reloadData()
-        }
-//        collectionReference.getDocuments { (snap, error) in
-//            guard let documents = snap?.documents else { return }
-//            for document in documents {
-//                /// dataを取得する
-//                let data = document.data()
-//                let newCategory = Category.init(data: data)
-//                self.categories.append(newCategory)
-//            }
-//            self.collectionView.reloadData()
-//        }
+            
+            snap?.documentChanges.forEach({ (change) in
+                let data = change.document.data()
+                let category = Category.init(data: data)
+                /// 変更の内容によって呼ぶ関数を変える
+                switch change.type {
+                case .added:
+                    self.onDocumentAdded(change: change, category: category)
+                case .modified:
+                    self.onDocumentModified()
+                case .removed:
+                    self.onDocumentRemoved()
+                }
+            })
+        })
     }
+    
+    func onDocumentAdded(change: DocumentChange, category: Category) {
+        let newIndex = Int(change.newIndex)
+        categories.insert(category, at: newIndex)
+        collectionView.insertItems(at: [IndexPath(item: newIndex, section: 0)])
+    }
+    
+    func onDocumentModified() {
+        
+    }
+    
+    func onDocumentRemoved() {
+        
+    }
+
 
 
     fileprivate func presentLoginController() {
@@ -141,19 +130,7 @@ class HomeVC: UIViewController {
                 debugPrint(error)
             }
         }
-//        if let _ = Auth.auth().currentUser {
-//            do {
-////                try Auth.auth().signOut()
-//                presentLoginController()
-//            } catch {
-//                debugPrint(error.localizedDescription)
-//            }
-//        } else {
-//            presentLoginController()
-//        }
-        
     }
-    
 }
 
 extension HomeVC : UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -197,3 +174,57 @@ extension HomeVC : UICollectionViewDelegate, UICollectionViewDataSource, UIColle
         }
     }
 }
+
+
+/// 予備コード
+
+//    func fetchDocument() {
+//        /// firestoreのデータの場所を指定する。このIDのデータが更新された時リアルタイムでアップデートされる。
+//        let docRef = db.collection("categories").document("PO4UCGdyyFwgSydq98XE")
+
+/// リアルタイム通信の処理
+//        docRef.addSnapshotListener { (snap, error) in
+//            self.categories.removeAll()
+//            guard let data = snap?.data() else { return }
+//            let newCategory = Category.init(data: data)
+//            self.categories.append(newCategory)
+//            self.collectionView.reloadData()
+//        }
+//        docRef.getDocument { (snap, error) in
+//            /// DBからデータを取り出す
+//            guard let data = snap?.data() else { return }
+//            let newCategory = Category.init(data: data)
+//            self.categories.append(newCategory)
+//            self.collectionView.reloadData()
+//
+//        }
+
+//    func fetchCollection() {
+//        /// dbのcollectionを指定する
+//        let collectionReference = db.collection("categories")
+//        ///
+//        listener = collectionReference.addSnapshotListener { (snap, error) in
+//            guard let documents = snap?.documents else { return }
+//            print(snap?.documentChanges.count)
+//            snap?.documentChanges
+//
+//            self.categories.removeAll()
+//            for document in documents {
+//                /// dataを取得する
+//                let data = document.data()
+//                let newCategory = Category.init(data: data)
+//                self.categories.append(newCategory)
+//            }
+//            self.collectionView.reloadData()
+//        }
+//        collectionReference.getDocuments { (snap, error) in
+//            guard let documents = snap?.documents else { return }
+//            for document in documents {
+//                /// dataを取得する
+//                let data = document.data()
+//                let newCategory = Category.init(data: data)
+//                self.categories.append(newCategory)
+//            }
+//            self.collectionView.reloadData()
+//        }
+//    }
