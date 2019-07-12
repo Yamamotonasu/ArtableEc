@@ -14,26 +14,64 @@ class ProductsVC: UIViewController {
     
     // Outlets
     
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     @IBOutlet weak var tableView: UITableView!
     
     // variable
     var products = [Product]()
     var category: Category!
+    var listener: ListenerRegistration
+    var db : Firestore!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let product = Product.init(name: "Landscape", id: "kkkkk", category: "nature", price: 24.99, productDescription: "What a lovely landscape", imageUrl: "https://images.unsplash.com/photo-1562256947-e52273ee433a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60", timeStamp: Timestamp(), stock: 0, favorite: false)
-        
-        products.append(product)
-        
+        db = Firestore.firestore()
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: Identifiers.ProductCell, bundle: nil), forCellReuseIdentifier: Identifiers.ProductCell)
     }
+    
+    func setupQuery() {
+        listener = db.products.addSnapshotListener({ (snap, error) in
+            if let error = error {
+                debugPrint(error.localizedDescription)
+            }
+            
+            snap?.documentChanges.forEach({ (change) in
+                let data = change.document.data()
+                let product = Product.init(data: data)
+                
+                switch change.type {
+                case .added:
+                    self.onDocumentAdded()
+                case .modified:
+                    self.onDocumentModified()
+                case .removed:
+                    self.onDocumentRemoved()
+                    
+                }
+            })
+        })
+    }
 }
 
 extension ProductsVC: UITableViewDelegate, UITableViewDataSource {
+    
+    func onDocumentAdded() {
+        
+    }
+    
+    func onDocumentModified() {
+        
+    }
+    
+    func onDocumentRemoved() {
+        
+    }
+    
     /// cellにIdentifierを設定しそれをdequeueReusableCellに指定する
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: Identifiers.ProductCell, for: indexPath) as? ProductCell {

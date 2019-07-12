@@ -13,6 +13,10 @@ extension Firestore {
     var categories: Query {
         return collection("categories").order(by: "timeStamp", descending: true)
     }
+    
+    var products: CollectionReference {
+        return collection("product")
+    }
 }
 
 extension Auth {
