@@ -36,6 +36,7 @@
 		03B4EF6D22D97B9500C00FDA /* ProductDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B4EF6522D96D9000C00FDA /* ProductDetailVC.swift */; };
 		03B4EF6E22D97BB000C00FDA /* ProductDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03B4EF6622D96D9000C00FDA /* ProductDetailVC.xib */; };
 		03B4EF6F22D981F000C00FDA /* ProductsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B4EF5622CF9F7800C00FDA /* ProductsVC.swift */; };
+		03B4EF7122D983F400C00FDA /* AddEditCategoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B4EF7022D983F400C00FDA /* AddEditCategoryVC.swift */; };
 		03FCD49822C71D15009776E6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FCD49722C71D15009776E6 /* AppDelegate.swift */; };
 		03FCD49A22C71D15009776E6 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FCD49922C71D15009776E6 /* HomeVC.swift */; };
 		03FCD49D22C71D15009776E6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03FCD49B22C71D15009776E6 /* Main.storyboard */; };
@@ -71,6 +72,7 @@
 		03B4EF5C22CFA10B00C00FDA /* ProductCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductCell.xib; sourceTree = "<group>"; };
 		03B4EF6522D96D9000C00FDA /* ProductDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailVC.swift; sourceTree = "<group>"; };
 		03B4EF6622D96D9000C00FDA /* ProductDetailVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductDetailVC.xib; sourceTree = "<group>"; };
+		03B4EF7022D983F400C00FDA /* AddEditCategoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditCategoryVC.swift; sourceTree = "<group>"; };
 		03FCD49422C71D15009776E6 /* Artable.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Artable.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03FCD49722C71D15009776E6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		03FCD49922C71D15009776E6 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
@@ -157,6 +159,16 @@
 			path = XIBs;
 			sourceTree = "<group>";
 		};
+		03B4EF7222D983FB00C00FDA /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				03B4EF7022D983F400C00FDA /* AddEditCategoryVC.swift */,
+				03FCD4B122C73ADF009776E6 /* AdminHomeVC.swift */,
+				03FCD4AF22C73ADF009776E6 /* AppDelegate.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		03FCD48B22C71D15009776E6 = {
 			isa = PBXGroup;
 			children = (
@@ -194,9 +206,8 @@
 		03FCD4AE22C73ADF009776E6 /* ArdableAdmin */ = {
 			isa = PBXGroup;
 			children = (
+				03B4EF7222D983FB00C00FDA /* Controller */,
 				03FCD4C722C7A4B0009776E6 /* GoogleService-Info.plist */,
-				03FCD4AF22C73ADF009776E6 /* AppDelegate.swift */,
-				03FCD4B122C73ADF009776E6 /* AdminHomeVC.swift */,
 				03FCD4B322C73ADF009776E6 /* Main.storyboard */,
 				03FCD4B822C73AE1009776E6 /* LaunchScreen.storyboard */,
 				03FCD4BB22C73AE1009776E6 /* Info.plist */,
@@ -501,6 +512,7 @@
 				03B4EF6F22D981F000C00FDA /* ProductsVC.swift in Sources */,
 				03B4EF6A22D97B5700C00FDA /* RoundedViews.swift in Sources */,
 				03FCD4B022C73ADF009776E6 /* AppDelegate.swift in Sources */,
+				03B4EF7122D983F400C00FDA /* AddEditCategoryVC.swift in Sources */,
 				03B4EF6B22D97B6000C00FDA /* Extensions.swift in Sources */,
 				0308DA4E22CE53D6002E8723 /* Category.swift in Sources */,
 				0308DA5222CEBB7C002E8723 /* CategoryCell.swift in Sources */,

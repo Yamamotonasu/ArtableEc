@@ -97,16 +97,101 @@
                         <outlet property="activityIndicator" destination="6eJ-3h-0lh" id="Y7v-tf-eIf"/>
                         <outlet property="collectionView" destination="r0I-zn-WIz" id="JqD-PQ-dHT"/>
                         <outlet property="loginOutBtn" destination="dH2-7R-cTt" id="UeM-dd-o7z"/>
+                        <segue destination="Wj5-R8-PGa" kind="show" identifier="ToAddEditCategory" id="RX2-7D-dzR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XXp-BI-dGU" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="993" y="74"/>
         </scene>
+        <!--Add Edit CategoryVC-->
+        <scene sceneID="xzd-Cw-bxx">
+            <objects>
+                <viewController id="Wj5-R8-PGa" customClass="AddEditCategoryVC" customModule="ArdableAdmin" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Oal-1J-eAB">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nX8-MQ-ycM">
+                                <rect key="frame" x="147" y="108" width="120" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Category Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="W8b-zh-xv1">
+                                <rect key="frame" x="20" y="141" width="374" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap image to add category image" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JFI-2N-7Si">
+                                <rect key="frame" x="20" y="191" width="374" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="camera" translatesAutoresizingMaskIntoConstraints="NO" id="qOn-eP-Llw" customClass="RoundedImageView" customModule="ArdableAdmin" customModuleProvider="target">
+                                <rect key="frame" x="107" y="232" width="200" height="250"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="3iw-0N-RMF"/>
+                                    <constraint firstAttribute="height" constant="250" id="hgv-kS-E3t"/>
+                                </constraints>
+                            </imageView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="DgY-aR-5ub">
+                                <rect key="frame" x="188.5" y="502" width="37" height="37"/>
+                                <color key="color" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </activityIndicatorView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w00-B2-lfx" customClass="RoundedButton" customModule="ArdableAdmin" customModuleProvider="target">
+                                <rect key="frame" x="20" y="802" width="374" height="40"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="26z-fU-xo9"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
+                                <state key="normal" title="Add Category">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="addCategoryClicked:" destination="Wj5-R8-PGa" eventType="touchUpInside" id="IOt-mP-MCI"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="u5n-7B-4QA" firstAttribute="trailing" secondItem="W8b-zh-xv1" secondAttribute="trailing" constant="20" id="6ux-pL-LCZ"/>
+                            <constraint firstItem="W8b-zh-xv1" firstAttribute="leading" secondItem="u5n-7B-4QA" secondAttribute="leading" constant="20" id="7Qv-Lw-N3X"/>
+                            <constraint firstItem="DgY-aR-5ub" firstAttribute="top" secondItem="qOn-eP-Llw" secondAttribute="bottom" constant="20" id="8Kw-mK-deQ"/>
+                            <constraint firstItem="w00-B2-lfx" firstAttribute="leading" secondItem="u5n-7B-4QA" secondAttribute="leading" constant="20" id="8dA-le-ijf"/>
+                            <constraint firstItem="qOn-eP-Llw" firstAttribute="top" secondItem="JFI-2N-7Si" secondAttribute="bottom" constant="20" id="FpW-5d-dTc"/>
+                            <constraint firstItem="u5n-7B-4QA" firstAttribute="trailing" secondItem="w00-B2-lfx" secondAttribute="trailing" constant="20" id="IcT-Of-rGz"/>
+                            <constraint firstItem="qOn-eP-Llw" firstAttribute="centerX" secondItem="Oal-1J-eAB" secondAttribute="centerX" id="LgS-03-qBB"/>
+                            <constraint firstItem="u5n-7B-4QA" firstAttribute="trailing" secondItem="JFI-2N-7Si" secondAttribute="trailing" constant="20" id="MfS-8G-hab"/>
+                            <constraint firstItem="JFI-2N-7Si" firstAttribute="top" secondItem="W8b-zh-xv1" secondAttribute="bottom" constant="20" id="RoP-mm-0y5"/>
+                            <constraint firstItem="W8b-zh-xv1" firstAttribute="top" secondItem="nX8-MQ-ycM" secondAttribute="bottom" constant="12" id="mZg-ka-fpC"/>
+                            <constraint firstItem="DgY-aR-5ub" firstAttribute="centerX" secondItem="Oal-1J-eAB" secondAttribute="centerX" id="qeT-6j-yII"/>
+                            <constraint firstItem="nX8-MQ-ycM" firstAttribute="top" secondItem="u5n-7B-4QA" secondAttribute="top" constant="20" id="tKh-zb-lhR"/>
+                            <constraint firstItem="u5n-7B-4QA" firstAttribute="bottom" secondItem="w00-B2-lfx" secondAttribute="bottom" constant="20" id="u6W-nj-jOG"/>
+                            <constraint firstItem="nX8-MQ-ycM" firstAttribute="centerX" secondItem="Oal-1J-eAB" secondAttribute="centerX" id="x2p-kO-SUP"/>
+                            <constraint firstItem="JFI-2N-7Si" firstAttribute="leading" secondItem="u5n-7B-4QA" secondAttribute="leading" constant="20" id="yxL-SU-D3r"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="u5n-7B-4QA"/>
+                    </view>
+                    <connections>
+                        <outlet property="activityIndicator" destination="DgY-aR-5ub" id="OoY-7m-g4G"/>
+                        <outlet property="categoryImg" destination="qOn-eP-Llw" id="7wv-xO-4aK"/>
+                        <outlet property="nameTxt" destination="W8b-zh-xv1" id="gFH-SI-j7X"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="m4f-Lv-ggr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1837.68115942029" y="73.660714285714278"/>
+        </scene>
     </scenes>
     <resources>
         <image name="bar_button_cart" width="27" height="24"/>
         <image name="bar_button_star" width="26" height="26"/>
         <image name="bg_cat3" width="1500" height="1875"/>
+        <image name="camera" width="66" height="54"/>
     </resources>
 </document>
