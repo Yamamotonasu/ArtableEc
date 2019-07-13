@@ -12,6 +12,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProductDetailVC" customModule="Artable" customModuleProvider="target">
             <connections>
+                <outlet property="bgView" destination="xeY-Ko-h74" id="yke-kg-Xxb"/>
+                <outlet property="productDescription" destination="Znx-1E-LMe" id="cUe-Ol-IST"/>
+                <outlet property="productImg" destination="Zz9-MK-Lnr" id="4fq-4b-fhH"/>
+                <outlet property="productPrice" destination="BHy-aE-7ub" id="lEj-dP-HxR"/>
+                <outlet property="productTitle" destination="T8d-OY-N6C" id="T84-24-tQ1"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -21,9 +26,9 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xeY-Ko-h74">
-                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                    <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                     <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Fam-lK-Wca">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     </view>
                     <blurEffect style="extraLight"/>
@@ -34,7 +39,7 @@
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="4tA-ff-zHm">
                             <rect key="frame" x="20" y="20" width="334" height="468"/>
                             <subviews>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="aerial_3" translatesAutoresizingMaskIntoConstraints="NO" id="Zz9-MK-Lnr">
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="aerial_3" translatesAutoresizingMaskIntoConstraints="NO" id="Zz9-MK-Lnr">
                                     <rect key="frame" x="0.0" y="0.0" width="334" height="250"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="250" id="uod-LC-DGJ"/>
@@ -67,6 +72,9 @@
                                     <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
                                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <state key="normal" title="Add to Cart"/>
+                                    <connections>
+                                        <action selector="addCartClicked:" destination="-1" eventType="touchUpInside" id="h6G-Ac-wOy"/>
+                                    </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8P5-95-BBr">
                                     <rect key="frame" x="0.0" y="428" width="334" height="40"/>
@@ -77,6 +85,9 @@
                                     <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
                                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <state key="normal" title="Keep Shopping"/>
+                                    <connections>
+                                        <action selector="dismissProduct:" destination="-1" eventType="touchUpInside" id="PNe-jb-dL6"/>
+                                    </connections>
                                 </button>
                             </subviews>
                         </stackView>
@@ -96,8 +107,8 @@
                 <constraint firstItem="xeY-Ko-h74" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="GfZ-LD-iKN"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="xeY-Ko-h74" secondAttribute="trailing" id="RdK-Vj-lgs"/>
                 <constraint firstItem="xeY-Ko-h74" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="Sfd-Sg-Ph1"/>
+                <constraint firstAttribute="bottom" secondItem="xeY-Ko-h74" secondAttribute="bottom" id="at1-P6-xCq"/>
                 <constraint firstItem="8Ay-6E-lGq" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="tk8-Vi-dPZ"/>
-                <constraint firstItem="xeY-Ko-h74" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="z1L-Cv-QGI"/>
                 <constraint firstItem="8Ay-6E-lGq" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="zXh-mE-GtC"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
