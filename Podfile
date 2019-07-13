@@ -29,5 +29,6 @@ use_frameworks!
  
 # Pods for ArtableAdmin
 shared_pods
+pod 'Alamofire'
 end
 
