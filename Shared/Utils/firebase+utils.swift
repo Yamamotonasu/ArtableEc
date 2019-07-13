@@ -15,7 +15,7 @@ extension Firestore {
     }
     
     var products: CollectionReference {
-        return collection("product")
+        return collection("products")
     }
 }
 

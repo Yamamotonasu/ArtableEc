@@ -8,22 +8,17 @@
 
 import UIKit
 import FirebaseFirestore
-import Alamofire
 
 class ProductsVC: UIViewController {
     
     // Outlets
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
     
     @IBOutlet weak var tableView: UITableView!
     
     // variable
     var products = [Product]()
     var category: Category!
-    var listener: ListenerRegistration
+    var listener: ListenerRegistration!
     var db : Firestore!
 
     override func viewDidLoad() {
@@ -32,9 +27,12 @@ class ProductsVC: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: Identifiers.ProductCell, bundle: nil), forCellReuseIdentifier: Identifiers.ProductCell)
+        setupQuery()
     }
     
+    /// 変更が加わった時
     func setupQuery() {
+        /// firestoreのproductscollectionを監視する
         listener = db.products.addSnapshotListener({ (snap, error) in
             if let error = error {
                 debugPrint(error.localizedDescription)
@@ -46,11 +44,11 @@ class ProductsVC: UIViewController {
                 
                 switch change.type {
                 case .added:
-                    self.onDocumentAdded()
+                    self.onDocumentAdded(change: change, product: product)
                 case .modified:
-                    self.onDocumentModified()
+                    self.onDocumentModified(change: change, product: product)
                 case .removed:
-                    self.onDocumentRemoved()
+                    self.onDocumentRemoved(change: change)
                     
                 }
             })
@@ -60,16 +58,33 @@ class ProductsVC: UIViewController {
 
 extension ProductsVC: UITableViewDelegate, UITableViewDataSource {
     
-    func onDocumentAdded() {
-        
+    /// 変更が加わった時
+    func onDocumentAdded(change: DocumentChange, product: Product) {
+        let newIndex = Int(change.newIndex)
+        products.insert(product, at: newIndex)
+        tableView.insertRows(at: [IndexPath(row: newIndex, section: 0)], with: .fade)
     }
     
-    func onDocumentModified() {
-        
+    func onDocumentModified(change: DocumentChange, product: Product) {
+        if change.oldIndex == change.newIndex {
+            /// Item changed, but remained in the same position
+            let index = Int(change.newIndex)
+            products[index] = product
+            tableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .none)
+        } else {
+            /// Item changed and changed position
+            let oldIndex = Int(change.oldIndex)
+            let newIndex = Int(change.newIndex)
+            products.remove(at: oldIndex)
+            products.insert(product, at:newIndex)
+            tableView.moveRow(at: IndexPath(row: oldIndex, section: 0), to: IndexPath(row: newIndex, section: 0))
+        }
     }
     
-    func onDocumentRemoved() {
-        
+    func onDocumentRemoved(change: DocumentChange) {
+        let oldIndex = Int(change.oldIndex)
+        products.remove(at: oldIndex)
+        tableView.deleteRows(at: [IndexPath(row: oldIndex, section: 0)], with: .left)
     }
     
     /// cellにIdentifierを設定しそれをdequeueReusableCellに指定する
@@ -81,6 +96,7 @@ extension ProductsVC: UITableViewDelegate, UITableViewDataSource {
         return UITableViewCell()
     }
     
+    /// cellの数を登録する
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return products.count
     }
