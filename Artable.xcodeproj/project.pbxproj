@@ -27,6 +27,8 @@
 		03B4EF5E22CFA10B00C00FDA /* ProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B4EF5B22CFA10B00C00FDA /* ProductCell.swift */; };
 		03B4EF5F22CFA10B00C00FDA /* ProductCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03B4EF5C22CFA10B00C00FDA /* ProductCell.xib */; };
 		03B4EF6022CFA10B00C00FDA /* ProductCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03B4EF5C22CFA10B00C00FDA /* ProductCell.xib */; };
+		03B4EF6722D96D9000C00FDA /* ProductDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B4EF6522D96D9000C00FDA /* ProductDetailVC.swift */; };
+		03B4EF6822D96D9000C00FDA /* ProductDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03B4EF6622D96D9000C00FDA /* ProductDetailVC.xib */; };
 		03FCD49822C71D15009776E6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FCD49722C71D15009776E6 /* AppDelegate.swift */; };
 		03FCD49A22C71D15009776E6 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FCD49922C71D15009776E6 /* HomeVC.swift */; };
 		03FCD49D22C71D15009776E6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03FCD49B22C71D15009776E6 /* Main.storyboard */; };
@@ -60,6 +62,8 @@
 		03B4EF5822CFA02600C00FDA /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		03B4EF5B22CFA10B00C00FDA /* ProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCell.swift; sourceTree = "<group>"; };
 		03B4EF5C22CFA10B00C00FDA /* ProductCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductCell.xib; sourceTree = "<group>"; };
+		03B4EF6522D96D9000C00FDA /* ProductDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailVC.swift; sourceTree = "<group>"; };
+		03B4EF6622D96D9000C00FDA /* ProductDetailVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductDetailVC.xib; sourceTree = "<group>"; };
 		03FCD49422C71D15009776E6 /* Artable.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Artable.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03FCD49722C71D15009776E6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		03FCD49922C71D15009776E6 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
@@ -131,6 +135,8 @@
 			children = (
 				0308DA4522CE3534002E8723 /* ForgotPasswordVC.swift */,
 				0308DA4622CE3534002E8723 /* ForgotPasswordVC.xib */,
+				03B4EF6522D96D9000C00FDA /* ProductDetailVC.swift */,
+				03B4EF6622D96D9000C00FDA /* ProductDetailVC.xib */,
 			);
 			path = XIBs;
 			sourceTree = "<group>";
@@ -350,6 +356,7 @@
 				03FCD4C222C7470A009776E6 /* LoginStoryboard.storyboard in Resources */,
 				03FCD4C622C7A374009776E6 /* GoogleService-Info.plist in Resources */,
 				03FCD49F22C71D1C009776E6 /* Assets.xcassets in Resources */,
+				03B4EF6822D96D9000C00FDA /* ProductDetailVC.xib in Resources */,
 				0308DA4822CE3534002E8723 /* ForgotPasswordVC.xib in Resources */,
 				03FCD49D22C71D15009776E6 /* Main.storyboard in Resources */,
 			);
@@ -457,6 +464,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0308DA3C22C83FBA002E8723 /* Extensions.swift in Sources */,
+				03B4EF6722D96D9000C00FDA /* ProductDetailVC.swift in Sources */,
 				0308DA4D22CE53D6002E8723 /* Category.swift in Sources */,
 				0308DA4A22CE4851002E8723 /* firebase+utils.swift in Sources */,
 				03FCD49A22C71D15009776E6 /* HomeVC.swift in Sources */,
