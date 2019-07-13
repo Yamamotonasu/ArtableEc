@@ -33,7 +33,8 @@ class ProductsVC: UIViewController {
     /// 変更が加わった時
     func setupQuery() {
         /// firestoreのproductscollectionを監視する
-        listener = db.products.addSnapshotListener({ (snap, error) in
+        /// categoryのidとproductフィールドのcategoryが同じものを表示する
+        listener = db.products(category: category.id).addSnapshotListener({ (snap, error) in
             if let error = error {
                 debugPrint(error.localizedDescription)
             }

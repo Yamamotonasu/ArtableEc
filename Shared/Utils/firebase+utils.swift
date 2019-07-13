@@ -14,8 +14,9 @@ extension Firestore {
         return collection("categories").order(by: "timeStamp", descending: true)
     }
     
-    var products: CollectionReference {
-        return collection("products")
+    /// productsフィールドのcategoryが同じものを返す
+    func products(category: String) -> Query {
+        return collection("products").whereField("category", isEqualTo: category).order(by: "timeStamp", descending:  true)
     }
 }
 
