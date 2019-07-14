@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseStorage
 
 class AddEditCategoryVC: UIViewController {
     // outlet
@@ -32,6 +33,57 @@ class AddEditCategoryVC: UIViewController {
     }
 
     @IBAction func addCategoryClicked(_ sender: Any) {
+        activityIndicator.startAnimating()
+        uploadImageThenDocument()
+    }
+
+    func uploadImageThenDocument() {
+        /// 登録されている画像と名前が空ならエラーアラートを出す
+        guard let image = categoryImg.image,
+            let categoryName = nameTxt.text, categoryName.isNotEmpty else {
+                simpleAlert(title: "ERROR", msg: "Must add category image and name")
+                return
+        }
+        
+        /// 画像をデータ型に変更する
+        guard let imageData = image.jpegData(compressionQuality: 0.2) else { return }
+        
+        /// storageの画像への参照を作成する
+        let imageRef = Storage.storage().reference().child("/categoryImages/\(categoryName).jpg")
+        
+        /// metadataを作成する
+        let metaData = StorageMetadata()
+        metaData.contentType = "image/jpg"
+        
+        /// 画像をアップロードする
+        imageRef.putData(imageData, metadata: metaData) { (metaData, error) in
+            /// エラーハンドリング
+            if let error = error {
+                debugPrint(error.localizedDescription)
+                self.simpleAlert(title: "ERROR", msg: "アップロード出来ません。")
+                self.activityIndicator.stopAnimating()
+                return
+            }
+            /// 画像がアップロードされたらDownload URLを取得する
+            imageRef.downloadURL(completion: { (url, error) in
+                if let error = error {
+                    debugPrint(error.localizedDescription)
+                    self.simpleAlert(title: "ERROR", msg: "アップロード出来ません。")
+                    self.activityIndicator.stopAnimating()
+                    return
+                }
+                
+                guard let url = url else { return }
+                /// 画像がアップロードされた時のurlをデバッグエリアへ表示する
+                print(url)
+                
+            })
+            
+        }
+    }
+    
+    func uploadDocument() {
+        
     }
 }
 
@@ -55,3 +107,11 @@ extension AddEditCategoryVC: UIImagePickerControllerDelegate, UINavigationContro
         dismiss(animated: true, completion: nil)
     }
 }
+
+
+/// -memo
+/// turn the image into data
+/// create an storage image reference -> A location in firestorage for it to be stored
+/// set the meta data
+/// once the image is uploaded, relative the download URL
+/// upload new category document to the firestore categories collection
