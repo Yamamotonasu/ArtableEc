@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseStorage
+import FirebaseFirestore
 
 class AddEditCategoryVC: UIViewController {
     // outlet
@@ -77,14 +78,40 @@ class AddEditCategoryVC: UIViewController {
                 /// 画像がアップロードされた時のurlをデバッグエリアへ表示する
                 print(url)
                 
+                self.uploadDocument(url: url.absoluteString)
             })
             
         }
     }
     
-    func uploadDocument() {
+    func uploadDocument(url: String) {
+        var docRef: DocumentReference!
+        var category = Category.init(name: nameTxt.text!, id: "", imgUrl: url, timeStamp: Timestamp())
+        docRef = Firestore.firestore().collection("categories").document()
+        category.id = docRef.documentID
         
+        /// categoryを辞書型へ変換する
+        let data = Category.modelToData(category: category)
+        
+        docRef.setData(data, merge: true) { (error) in
+            if let error = error {
+                debugPrint(error.localizedDescription)
+                self.simpleAlert(title: "ERROR", msg: "アップロード出来ません。")
+                self.activityIndicator.stopAnimating()
+                return
+            }
+            
+            self.navigationController?.popViewController(animated: true)
+        }
     }
+    
+    
+    func handleError(error: Error, msg: String) {
+        debugPrint(error.localizedDescription)
+        self.simpleAlert(title: "ERROR", msg: "アップロード出来ません。")
+        self.activityIndicator.stopAnimating()
+    }
+
 }
 
 /// UINavigationControllerDelegteはpush popされた時の動作を変更する為に適応
