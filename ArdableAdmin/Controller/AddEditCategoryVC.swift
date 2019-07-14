@@ -60,17 +60,13 @@ class AddEditCategoryVC: UIViewController {
         imageRef.putData(imageData, metadata: metaData) { (metaData, error) in
             /// エラーハンドリング
             if let error = error {
-                debugPrint(error.localizedDescription)
-                self.simpleAlert(title: "ERROR", msg: "アップロード出来ません。")
-                self.activityIndicator.stopAnimating()
+                self.handleError(error: error, msg: "画像をアップロード出来ません。")
                 return
             }
             /// 画像がアップロードされたらDownload URLを取得する
             imageRef.downloadURL(completion: { (url, error) in
                 if let error = error {
-                    debugPrint(error.localizedDescription)
-                    self.simpleAlert(title: "ERROR", msg: "アップロード出来ません。")
-                    self.activityIndicator.stopAnimating()
+                    self.handleError(error: error, msg: "URLがありません。")
                     return
                 }
                 
@@ -95,9 +91,7 @@ class AddEditCategoryVC: UIViewController {
         
         docRef.setData(data, merge: true) { (error) in
             if let error = error {
-                debugPrint(error.localizedDescription)
-                self.simpleAlert(title: "ERROR", msg: "アップロード出来ません。")
-                self.activityIndicator.stopAnimating()
+                self.handleError(error: error, msg: "新しいカテゴリーをFirestoreにアップロード出来ません。")
                 return
             }
             
@@ -105,7 +99,7 @@ class AddEditCategoryVC: UIViewController {
         }
     }
     
-    
+    /// エラーハンドリング
     func handleError(error: Error, msg: String) {
         debugPrint(error.localizedDescription)
         self.simpleAlert(title: "ERROR", msg: "アップロード出来ません。")
