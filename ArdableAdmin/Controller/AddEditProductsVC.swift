@@ -9,7 +9,16 @@
 import UIKit
 
 class AddEditProductsVC: UIViewController {
+    /// outlet
+    @IBOutlet weak var productNameTxt: UITextField!
+    @IBOutlet weak var productPriceTxt: UITextField!
+    @IBOutlet weak var productDescTxt: UITextView!
+    @IBOutlet weak var productImgView: RoundedImageView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var addBtn: RoundedButton!
     
+    
+    /// variable
     var selectedCategory : Category!
     var productToEdit : Product?
 
@@ -18,5 +27,10 @@ class AddEditProductsVC: UIViewController {
 
         
     }
+    
+    @IBAction func addClicked(_ sender: Any) {
+        
+    }
+    
 
 }

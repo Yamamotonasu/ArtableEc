@@ -15,6 +15,7 @@ class AddEditCategoryVC: UIViewController {
     @IBOutlet weak var nameTxt: UITextField!
     @IBOutlet weak var categoryImg: RoundedImageView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var addBtn: UIButton!
     
     // Variable
     var categoryToEdit : Category?
@@ -29,6 +30,16 @@ class AddEditCategoryVC: UIViewController {
         categoryImg.isUserInteractionEnabled = true
         categoryImg.addGestureRecognizer(tap)
         
+        /// 編集している時categoryToEditはnilではない
+        if let category = categoryToEdit {
+            nameTxt.text = category.name
+            addBtn.setTitle("Save changes", for: .normal)
+            
+            if let url = URL(string: category.imgUrl) {
+                categoryImg.contentMode = .scaleAspectFill
+                categoryImg.kf.setImage(with: url)
+            }
+        }
     }
     
     @objc func imgTapped(_ tap: UITapGestureRecognizer) {
@@ -85,6 +96,18 @@ class AddEditCategoryVC: UIViewController {
     func uploadDocument(url: String) {
         var docRef: DocumentReference!
         var category = Category.init(name: nameTxt.text!, id: "", imgUrl: url, timeStamp: Timestamp())
+        
+        /// 
+        if let categoryToEdit = categoryToEdit {
+            /// 編集
+            docRef = Firestore.firestore().collection("categories").document(categoryToEdit.id)
+            category.id = categoryToEdit.id
+        } else {
+            /// 新しいカテゴリ
+            docRef = Firestore.firestore().collection("categories").document()
+            category.id = docRef.documentID
+        }
+        
         docRef = Firestore.firestore().collection("categories").document()
         category.id = docRef.documentID
         
