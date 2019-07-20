@@ -114,7 +114,7 @@ class AddEditCategoryVC: UIViewController {
         
         /// categoryを辞書型へ変換する
         let data = Category.modelToData(category: category)
-        
+    
         docRef.setData(data, merge: true) { (error) in
             if let error = error {
                 self.handleError(error: error, msg: "新しいカテゴリーをFirestoreにアップロード出来ません。")
