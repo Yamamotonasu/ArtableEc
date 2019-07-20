@@ -47,7 +47,6 @@ class AddEditCategoryVC: UIViewController {
     }
 
     @IBAction func addCategoryClicked(_ sender: Any) {
-        activityIndicator.startAnimating()
         uploadImageThenDocument()
     }
 
@@ -58,6 +57,8 @@ class AddEditCategoryVC: UIViewController {
                 simpleAlert(title: "ERROR", msg: "Must add category image and name")
                 return
         }
+        
+        activityIndicator.startAnimating()
         
         /// 画像をデータ型に変更する
         guard let imageData = image.jpegData(compressionQuality: 0.2) else { return }
