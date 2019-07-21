@@ -92,34 +92,77 @@ class RegisterVC: UIViewController, UITextViewDelegate {
         /// emailとpasswordのみでも承認する
         let credential = EmailAuthProvider.credential(withEmail: email, password: password)
         
+        activityIndicator.startAnimating()
+        
+//        Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
+//            if let error = error {
+//                debugPrint(error)
+//                Auth.auth().handleFireAuthError(error: error, vc: self)
+//                return
+//            }
+//
+//            guard let fireUser = result?.user else { return }
+//
+//            let artUser = User.init(id: fireUser.uid, email: email, username: username, stripeId: "")
+//
+//            // upload to firestore
+//
+//            self.createFirestoreUser(user: artUser)
+//        }
         /// facebookでのログインを許可する
 //        let facebookCredential = FacebookAuthProvider.credential(withAccessToken: <#T##String#>)
 //
 //        /// twitterでのログインを許可する
 //        let twitterCredet
         
-        authUser.linkAndRetrieveData(with: credential) { (result, error) in
+        authUser.link(with: credential) { (result, error) in
             if let error = error {
                 debugPrint(error)
                 Auth.auth().handleFireAuthError(error: error, vc: self)
                 return
             }
+            
+            guard let fireUser = result?.user else { return }
+            let artUser = User.init(id: fireUser.uid, email: email, username: username, stripeId: "")
+
+            // upload to firestore
+            self.createFirestoreUser(user: artUser)
         }
-        
-        activityIndicator.startAnimating()
-        
-        
+//
+//
+//        activityIndicator.startAnimating()
+//
+//
         /// クリックするとユーザーが作成される。
         Auth.auth().createUser(withEmail: email, password: password) { (authResult, error) in
             /// errroが起きるとここで処理が終了する
-//            if let error = error {
-//                debugPrint(error)
-//                return
-//            }
-            
+            if let error = error {
+                debugPrint(error)
+                Auth.auth().handleFireAuthError(error: error, vc: self)
+                return
+            }
+
             self.activityIndicator.stopAnimating()
             self.dismiss(animated: true, completion: nil)
-//            guard let user = authResult?.user else { return }
+        }
+    }
+    
+    func createFirestoreUser(user: User) {
+        // create document reference
+        let newUserRef = Firestore.firestore().collection("users").document(user.id)
+        
+        // create model data
+        let data = User.modelToData(user: user)
+        
+        // upload to firestore
+        newUserRef.setData(data) { (error) in
+            if let error = error {
+                Auth.auth().handleFireAuthError(error: error, vc: self)
+                debugPrint("サインイン時にエラーが発生しました。 \(error.localizedDescription)")
+            } else {
+                self.dismiss(animated: true, completion: nil)
+            }
+            self.activityIndicator.stopAnimating()
         }
     }
 }
