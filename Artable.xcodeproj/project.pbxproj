@@ -55,6 +55,7 @@
 		03FCD4CE22C7C06C009776E6 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FCD4CD22C7C06C009776E6 /* LoginVC.swift */; };
 		03FCD4D022C7C093009776E6 /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FCD4CF22C7C093009776E6 /* RegisterVC.swift */; };
 		03FEF67322E42D95009BDC90 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FEF67222E42D95009BDC90 /* User.swift */; };
+		03FEF67622E435EC009BDC90 /* UserServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FEF67522E435EC009BDC90 /* UserServices.swift */; };
 		3CC548772D3A5111C3207653 /* Pods_Artable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06436E4DEC1E9C28A0152123 /* Pods_Artable.framework */; };
 		B0B7CFD9BD219B15FA832F4C /* Pods_ArdableAdmin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1ABB49880706569A4C804A22 /* Pods_ArdableAdmin.framework */; };
 /* End PBXBuildFile section */
@@ -97,6 +98,7 @@
 		03FCD4CD22C7C06C009776E6 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		03FCD4CF22C7C093009776E6 /* RegisterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
 		03FEF67222E42D95009BDC90 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		03FEF67522E435EC009BDC90 /* UserServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserServices.swift; sourceTree = "<group>"; };
 		06436E4DEC1E9C28A0152123 /* Pods_Artable.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Artable.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BA6A2D57E2F479FB848E9F1 /* Pods-ArdableAdmin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArdableAdmin.debug.xcconfig"; path = "Target Support Files/Pods-ArdableAdmin/Pods-ArdableAdmin.debug.xcconfig"; sourceTree = "<group>"; };
 		1ABB49880706569A4C804A22 /* Pods_ArdableAdmin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ArdableAdmin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -201,6 +203,7 @@
 		03FCD49622C71D15009776E6 /* Artable */ = {
 			isa = PBXGroup;
 			children = (
+				03FEF67422E435BC009BDC90 /* Services */,
 				0308DA4222CE34C1002E8723 /* XIBs */,
 				03FCD4CC22C7BFF0009776E6 /* Storyboards */,
 				03FCD4CA22C7BFCE009776E6 /* View */,
@@ -272,6 +275,14 @@
 				03FCD4A022C71D1C009776E6 /* LaunchScreen.storyboard */,
 			);
 			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		03FEF67422E435BC009BDC90 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				03FEF67522E435EC009BDC90 /* UserServices.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		08521E2E2EB708DFE9054510 /* Frameworks */ = {
@@ -505,6 +516,7 @@
 				03B4EF5722CF9F7800C00FDA /* ProductsVC.swift in Sources */,
 				0308DA4722CE3534002E8723 /* ForgotPasswordVC.swift in Sources */,
 				0308DA3E22C84D0E002E8723 /* Constants.swift in Sources */,
+				03FEF67622E435EC009BDC90 /* UserServices.swift in Sources */,
 				0308DA5122CEBB7C002E8723 /* CategoryCell.swift in Sources */,
 				03B4EF5922CFA02600C00FDA /* Product.swift in Sources */,
 			);
