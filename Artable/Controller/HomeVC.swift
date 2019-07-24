@@ -111,6 +111,11 @@ class HomeVC: UIViewController {
         present(controller, animated: true, completion: nil)
     }
     
+    
+    @IBAction func favoritesClicked(_ sender: Any) {
+        performSegue(withIdentifier: Segues.ToFavorites, sender: self)
+    }
+    
     @IBAction func loginOutClicked(_ sender: Any) {
         
         guard let user = Auth.auth().currentUser else { return }
@@ -188,6 +193,7 @@ extension HomeVC : UICollectionViewDelegate, UICollectionViewDataSource, UIColle
         return CGSize(width: cellWidth, height: cellHeight)
     }
     
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         selectedCategory = categories[indexPath.item]
         /// tapされたcellに飛ぶ
@@ -200,6 +206,11 @@ extension HomeVC : UICollectionViewDelegate, UICollectionViewDataSource, UIColle
         if segue.identifier == Segues.ToProducts {
             if let destination = segue.destination as? ProductsVC {
                 destination.category = selectedCategory
+            }
+        } else if segue.identifier == Segues.ToFavorites {
+            if let destination = segue.destination as? ProductsVC {
+                destination.category = selectedCategory
+                destination.showFavorites = true
             }
         }
     }

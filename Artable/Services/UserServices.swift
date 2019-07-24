@@ -47,7 +47,6 @@ final class _UserService {
             
             guard let data = snap?.data() else { return }
             self.user = User.init(data: data)
-            print(self.user)
         })
         
         // ref favorite
@@ -64,6 +63,21 @@ final class _UserService {
                 self.favorites.append(favorite)
             })
         })
+    }
+    
+    func favoriteSelected(product: Product) {
+        let favoriteReference = Firestore.firestore().collection("users").document(user.id).collection("favorites")
+        
+        if favorites.contains(product) {
+            // お気に入りから削除
+            favorites.removeAll { $0 == product }
+            favoriteReference.document(product.id).delete()
+        } else {
+            // お気に入りに登録する
+            favorites.append(product)
+            let data = Product.modelToData(product: product)
+            favoriteReference.document(product.id).setData(data)
+        }
     }
     
     func logoutUser() {

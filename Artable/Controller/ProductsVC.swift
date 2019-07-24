@@ -9,7 +9,8 @@
 import UIKit
 import FirebaseFirestore
 
-class ProductsVC: UIViewController {
+class ProductsVC: UIViewController, ProductCellDelegate {
+    
     
     // Outlets
     
@@ -20,6 +21,7 @@ class ProductsVC: UIViewController {
     var category: Category!
     var listener: ListenerRegistration!
     var db : Firestore!
+    var showFavorites = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,9 +34,17 @@ class ProductsVC: UIViewController {
     
     /// 変更が加わった時
     func setupQuery() {
+        var reference: Query!
+        if showFavorites {
+            // collectionでtable指定、documentで絞り込み、更にcollectionでテーブル絞り込み
+            reference = db.collection("users").document(UserService.user.id).collection("favorites")
+        } else {
+            reference = db.products(category: category.id)
+        }
+        
         /// firestoreのproductscollectionを監視する
         /// categoryのidとproductフィールドのcategoryが同じものを表示する
-        listener = db.products(category: category.id).addSnapshotListener({ (snap, error) in
+        listener = reference.addSnapshotListener({ (snap, error) in
             if let error = error {
                 debugPrint(error.localizedDescription)
             }
@@ -55,6 +65,17 @@ class ProductsVC: UIViewController {
             })
         })
     }
+    
+    /// 画像がお気に入りされたあとの処理(delegateの関数)
+    func productFavorited(product: Product) {
+        UserService.favoriteSelected(product: product)
+        // 更新された行をreloadする為にproductが最初に現れるindex番号を探す、見つからなければ処理を終了する
+        guard let index = products.firstIndex(of: product) else { return }
+        // 上で探した行のindex番号を取得してtableViewの特定の行をreloadする
+        // reloadするのは複数行指定する事も可能
+        tableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
+    }
+    
 }
 
 extension ProductsVC: UITableViewDelegate, UITableViewDataSource {
@@ -91,7 +112,7 @@ extension ProductsVC: UITableViewDelegate, UITableViewDataSource {
     /// cellにIdentifierを設定しそれをdequeueReusableCellに指定する
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: Identifiers.ProductCell, for: indexPath) as? ProductCell {
-            cell.configureCell(product: products[indexPath.row])
+            cell.configureCell(product: products[indexPath.row], delegate: self)
             return cell
         }
         return UITableViewCell()

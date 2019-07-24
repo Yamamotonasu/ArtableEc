@@ -66,6 +66,9 @@
                             </barButtonItem>
                             <barButtonItem title="Item" image="bar_button_star" id="ImJ-Hz-rEC">
                                 <color key="tintColor" red="1" green="0.39153648009999997" blue="0.5656263305" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="favoritesClicked:" destination="BYZ-38-t0r" id="OEa-Ru-v1b"/>
+                                </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
@@ -74,6 +77,7 @@
                         <outlet property="collectionView" destination="dmE-7l-A1e" id="SBs-E7-Sxq"/>
                         <outlet property="loginOutBtn" destination="zCX-Wa-QlR" id="2sW-mg-1kf"/>
                         <segue destination="Z1u-57-8Uq" kind="show" identifier="toProductsVC" id="Ld1-0n-WNs"/>
+                        <segue destination="Z1u-57-8Uq" kind="show" identifier="ToFavorites" id="KPc-6F-QDn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -147,4 +151,7 @@
         <image name="bar_button_star" width="26" height="26"/>
         <image name="bg_cat3" width="1500" height="1875"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="KPc-6F-QDn"/>
+    </inferredMetricsTieBreakers>
 </document>
